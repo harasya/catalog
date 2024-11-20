@@ -16,7 +16,7 @@
             <div class="flex items-center gap-2">
                 <div class="quantity">
                     <img class="minus" src="~/assets/images/minus.svg" alt="Minus" @click="onMinus" />
-                    <input type="number" value="1" v-model="quantity" />
+                    <input type="number" v-model="quantity" />
                     <img class="plus" src="~/assets/images/plus.svg" alt="Plus" @click="onPlus" />
                 </div>
                 <button class="shoping-cart !hidden lg:!block">
