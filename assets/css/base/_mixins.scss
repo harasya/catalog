@@ -284,7 +284,6 @@
 @mixin generate-container-classes {
     @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
         @media (min-width: #{$breakpoint-value}) {
-            @debug $breakpoint-value;
             .container {
                 max-width: $breakpoint-value;
                 margin: 0 auto;
