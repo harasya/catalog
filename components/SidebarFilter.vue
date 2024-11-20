@@ -17,7 +17,7 @@ const onLoad = async () => {
 }
 
 const getCategories = async () => {
-    const { data, error } = await useApi<ICategory[]>('/api/categories')
+    const { data, error } = await useApi<ICategory[]>('/categories')
     if (error.value) {
         console.error('Failed to fetch categories:', error.value);
     } else {

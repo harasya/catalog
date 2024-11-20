@@ -63,7 +63,7 @@ const breadcrumbs = computed<IBreadcrumb[]>(() => [
 ])
 
 const onLoaded = async () => {
-    const { data, error } = await useApi<IProduct>(`/api/products/${id}`)
+    const { data, error } = await useApi<IProduct>(`/products/${id}`)
     if (error.value) {
         console.error('Failed to fetch products:', error.value);
     } else {
