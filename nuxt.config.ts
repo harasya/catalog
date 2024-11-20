@@ -12,8 +12,6 @@ export default defineNuxtConfig({
   },
   modules: ['@pinia/nuxt'],
   runtimeConfig: {
-    public: {
-      apiBaseUrl               : '',
-    }
+    apiBaseUrl               : '',
   },
 })

@@ -36,14 +36,13 @@ const { products, isLoading } = storeToRefs(useProductStore())
 
 const onLoaded = async () => {
     isLoading.value = true
-    const { data, error } = await useApi<IProduct[]>('/products')
+    const { data, error } = await useApi<IProduct[]>('/api/products')
 
     if (error.value) {
         console.error('Failed to fetch products:', error.value);
     } else {
         isLoading.value = false
         products.value = data.value || [] as IProduct[]
-        console.error("💢 ~ onLoaded ~ data.value:", data.value)
     }
 
 }

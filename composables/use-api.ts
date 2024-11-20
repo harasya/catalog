@@ -21,12 +21,11 @@ export default async function useApi<T> (
   options: CustomFetchOptions<T> = {},
 ): Promise<AsyncData<PickFrom<T, KeysOf<T>> | null, any>> {
   const opts      = defu(options, DEFAULT_CONFIG)
-  const config    = useRuntimeConfig()
-  console.error("💢 ~ config:", config)
+  // const config    = useRuntimeConfig()
 
-  const urlWithAppBase = config.public.apiBaseUrl + url
+  // const urlWithAppBase = config.public.apiBaseUrl + url
 
-  return await useFetch(urlWithAppBase, {
+  return await useFetch(url, {
     async onRequest () {
     },
 
