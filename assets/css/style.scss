@@ -1,0 +1,109 @@
+// Import utilities
+@use "utilities/padding";
+@use "utilities/margin";
+@use "utilities/container";
+@use "utilities/text";
+@use "utilities/background";
+@use "utilities/gap";
+@use "utilities/grid";
+@use "utilities/space";
+@use "utilities/display";
+
+:root {
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Proxima Nova", system-ui, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.w {
+    &-full {
+        width: 100%;
+    }
+    &-2 {
+       width: 0.5rem;
+    }
+    &-4 {
+        width: 1rem;
+    }
+    &-5 {
+        width: 1.5rem;
+    }
+    &-10 {
+        width: 2.5rem;
+    }
+}
+
+.h {
+    &-full {
+        height: 100%;
+    }
+    &-2 {
+        height: 0.5rem;
+    }
+    &-4 {
+        height: 1rem;
+    }
+    &-5 {
+        height: 1.25rem;
+    }
+    &-10 {
+        height: 2.5rem;
+    }
+}
+
+.rounded {
+    &-full {
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.flex {
+    display: flex;
+    &-row {
+        flex-direction: row;
+    }
+}
+
+.grid {
+    display: grid;
+}
+
+.items {
+    &-center {
+        align-items: center;
+    }
+    &-start {
+        align-items: flex-start;
+    }
+}
+
+.justify {
+    &-center {
+        justify-content: center;
+    }
+    &-between {
+        justify-content: space-between;
+    }
+}

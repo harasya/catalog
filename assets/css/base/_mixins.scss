@@ -1,0 +1,330 @@
+@use "../base/variables" as vars;
+
+@mixin generate-gap-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $spacing-key, $spacing-value in vars.$spacing {
+                .\\#{$breakpoint-name}:gap-#{$spacing-key} {
+                    gap: $spacing-value;
+                }
+            }
+        }
+    }
+
+    @each $spacing-key, $spacing-value in vars.$spacing {
+        .gap-#{$spacing-key} {
+            gap: $spacing-value;
+        }
+    }
+}
+
+@mixin generate-display-classes {
+    .block {
+        display: block;
+    }
+    .\!block {
+        display: block !important;
+    }
+    .hidden {
+        display: none;
+    }
+    .\!hidden {
+        display: none !important;
+    }
+
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: #{$breakpoint-value}) {
+            .#{"\\" + $breakpoint-name}\:hidden {
+                display: none;
+            }
+            .#{"\\" + $breakpoint-name}\:\!hidden {
+                display: none !important;
+            }
+            .#{"\\" + $breakpoint-name}\:block {
+                display: block;
+            }
+            .#{"\\" + $breakpoint-name}\:\!block {
+                display: block !important;
+            }
+        }
+    }
+}
+
+@mixin generate-space-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $spacing-key, $spacing-value in vars.$spacing {
+                .\\#{$breakpoint-name}:space-#{$spacing-key} {
+                    & > *:not(:last-child) {
+                        margin: $spacing-value;
+                    }
+                }
+
+                .\\#{$breakpoint-name}:space-x-#{$spacing-key} {
+                    & > *:not(:last-child) {
+                        margin-right: $spacing-value;
+                    }
+                }
+
+                .\\#{$breakpoint-name}:space-y-#{$spacing-key} {
+                    & > *:not(:last-child) {
+                        margin-bottom: $spacing-value;
+                    }
+                }
+            }
+        }
+    }
+
+    @each $spacing-key, $spacing-value in vars.$spacing {
+        .space-#{$spacing-key} {
+            & > *:not(:last-child) {
+                margin: $spacing-value;
+            }
+        }
+
+        .space-x-#{$spacing-key} {
+            & > *:not(:last-child) {
+                margin-right: $spacing-value;
+            }
+        }
+
+        .space-y-#{$spacing-key} {
+            & > *:not(:last-child) {
+                margin-bottom: $spacing-value;
+            }
+        }
+    }
+}
+
+@mixin generate-grid-classes {
+    @for $i from 1 through 10 {
+        .grid-cols-#{$i} {
+            grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+    }
+
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @for $i from 1 through 10 {
+                .#{"\\" + $breakpoint-name}\:grid-cols-#{$i} {
+                    grid-template-columns: repeat($i, minmax(0, 1fr));
+                }
+            }
+        }
+    }
+
+}
+
+
+
+@mixin generate-padding-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $spacing-key, $spacing-value in vars.$spacing {
+                .#{"\\" + $breakpoint-name}\:p-#{$spacing-key} {
+                    padding: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!p-#{$spacing-key} {
+                    padding: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:px-#{$spacing-key} {
+                    padding-left: $spacing-value;
+                    padding-right: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!px-#{$spacing-key} {
+                    padding-left: $spacing-value !important;
+                    padding-right: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:py-#{$spacing-key} {
+                    padding-top: $spacing-value;
+                    padding-bottom: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!py-#{$spacing-key} {
+                    padding-top: $spacing-value !important;
+                    padding-bottom: $spacing-value !important;
+                }
+            }
+        }
+    }
+
+    @each $spacing-key, $spacing-value in vars.$spacing {
+        .p-#{$spacing-key} {
+            padding: $spacing-value;
+        }
+
+        .\!p-#{$spacing-key} {
+            padding: $spacing-value !important;
+        }
+
+        .py-#{$spacing-key} {
+            padding-top: $spacing-value;
+            padding-bottom: $spacing-value;
+        }
+
+        .\!py-#{$spacing-key} {
+            padding-top: $spacing-value !important;
+            padding-bottom: $spacing-value !important;
+        }
+
+        .px-#{$spacing-key} {
+            padding-left: $spacing-value;
+            padding-right: $spacing-value;
+        }
+
+        .\!px-#{$spacing-key} {
+            padding-left: $spacing-value !important;
+            padding-right: $spacing-value !important;
+        }
+    }
+}
+
+@mixin generate-margin-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $spacing-key, $spacing-value in vars.$spacing {
+                .#{"\\" + $breakpoint-name}\:m-#{$spacing-key} {
+                    margin: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!m-#{$spacing-key} {
+                    margin: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:mb-#{$spacing-key} {
+                    margin-bottom: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!mb-#{$spacing-key} {
+                    margin-bottom: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:mt-#{$spacing-key} {
+                    margin-top: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!mt-#{$spacing-key} {
+                    margin-top: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:mx-#{$spacing-key} {
+                    margin-left: $spacing-value;
+                    margin-right: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!mx-#{$spacing-key} {
+                    margin-left: $spacing-value !important;
+                    margin-right: $spacing-value !important;
+                }
+
+                .#{"\\" + $breakpoint-name}\:my-#{$spacing-key} {
+                    margin-top: $spacing-value;
+                    margin-bottom: $spacing-value;
+                }
+
+                .#{"\\" + $breakpoint-name}\:\!my-#{$spacing-key} {
+                    margin-top: $spacing-value !important;
+                    margin-bottom: $spacing-value !important;
+                }
+            }
+        }
+    }
+
+    @each $spacing-key, $spacing-value in vars.$spacing {
+        .m-#{$spacing-key} {
+            margin: $spacing-value;
+        }
+
+        .\!m-#{$spacing-key} {
+            margin: $spacing-value !important;
+        }
+
+        .mb-#{$spacing-key} {
+            margin-bottom: $spacing-value;
+        }
+
+        .\!mb-#{$spacing-key} {
+            margin-bottom: $spacing-value !important;
+        }
+
+        .mt-#{$spacing-key} {
+            margin-top: $spacing-value;
+        }
+
+        .\!mt-#{$spacing-key} {
+            margin-top: $spacing-value !important;
+        }
+
+        .my-#{$spacing-key} {
+            margin-top: $spacing-value;
+            margin-bottom: $spacing-value;
+        }
+
+        .\!my-#{$spacing-key} {
+            margin-top: $spacing-value !important;
+            margin-bottom: $spacing-value !important;
+        }
+
+        .mx-#{$spacing-key} {
+            margin-left: $spacing-value;
+            margin-right: $spacing-value;
+        }
+
+        .\!mx-#{$spacing-key} {
+            margin-left: $spacing-value !important;
+            margin-right: $spacing-value !important;
+        }
+    }
+}
+
+@mixin generate-container-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: #{$breakpoint-value}) {
+            @debug $breakpoint-value;
+            .container {
+                max-width: $breakpoint-value;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+@mixin generate-text-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $colors-key, $colors-value in vars.$colors {
+                .\\#{$breakpoint-name}:text-#{$colors-key} {
+                    color: $colors-value;
+                }
+            }
+        }
+    }
+
+    @each $colors-key, $colors-value in vars.$colors {
+        .text-#{$colors-key} {
+            color: $colors-value;
+        }
+    }
+}
+
+@mixin generate-bg-classes {
+    @each $breakpoint-name, $breakpoint-value in vars.$breakpoints {
+        @media (min-width: $breakpoint-value) {
+            @each $colors-key, $colors-value in vars.$colors {
+                .\\#{$breakpoint-name}:bg-#{$colors-key} {
+                    background-color: $colors-value;
+                }
+            }
+        }
+    }
+
+    @each $colors-key, $colors-value in vars.$colors {
+        .bg-#{$colors-key} {
+            background-color: $colors-value;
+        }
+    }
+}
