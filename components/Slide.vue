@@ -8,7 +8,7 @@
         <Loading v-if="loading" width="160" height="100" responsive>
             <rect x="0" y="0" width="100%" height="100%" />
         </Loading>
-        <transition :name="transitionName" mode="out-in">
+        <transition v-else :name="transitionName" mode="out-in">
           <img :key="currentIndex" :src="images?.[currentIndex]" class="main-image" :alt="'Image ' + (currentIndex + 1)" />
         </transition>
 

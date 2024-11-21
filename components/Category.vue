@@ -8,12 +8,14 @@
                     <Loading width="15" />
                 </div>
             </template>
-            <div v-for="item in items" :key="item.id" class="section-filter__list flex justify-between items-center">
-                <div>
-                    {{ item.name }}
+            <template v-else>
+                <div v-for="item in items" :key="item.id" class="section-filter__list flex justify-between items-center">
+                    <div>
+                        {{ item.name }}
+                    </div>
+                    <div class="section-filter__list-count">{{ item.count }}</div>
                 </div>
-                <div class="section-filter__list-count">{{ item.count }}</div>
-            </div>
+            </template>
         </div>
     </div>
 </template>
