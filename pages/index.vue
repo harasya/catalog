@@ -42,7 +42,19 @@ const breadcrumbs = computed<IBreadcrumb[]>(() => [
     },
 ])
 
-const { products, isLoading } = storeToRefs(useProductStore())
+const { products, isLoading, search } = storeToRefs(useProductStore())
+
+
+watch(search, () => {
+    if (search.value) {
+        products.value = products.value.filter((item: IProduct) => item.name.toLowerCase().includes(search.value.toLowerCase()))
+
+        isLoading.value = false
+    } else {
+        isLoading.value = true
+        onLoaded()
+    }
+})
 
 const onLoaded = async () => {
     isLoading.value = true
@@ -55,7 +67,6 @@ const onLoaded = async () => {
         isLoading.value = false
         products.value = data.value || [] as IProduct[]
     }
-
 }
 
 onMounted(async () => {

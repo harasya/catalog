@@ -2,11 +2,11 @@
     <div class="header bg-gray-800 p-6">
         <div class="container">
             <div class="flex items-center justify-between">
-                <img src="~/assets/images/logo.svg" alt="logo" />
+                <img src="~/assets/images/logo.svg" alt="logo" @click="navigateTo('/')" />
                 <div class="flex items-center gap-4">
                     <div class="header__search">
                         <img src="~/assets/images/search.svg" alt="search" />
-                        <input type="text" placeholder="Search" />
+                        <input type="text" placeholder="Search" v-model="keyword" @keydown.enter="onSearch" />
                     </div>
                     <div class="header__cart rounded-full bg-gray-700 w-10 h-10 flex items-center justify-center">
                         <img src="~/assets/images/cart.svg" alt="cart" />
@@ -21,7 +21,20 @@
 </template>
 
 <script setup lang="ts">
+import { useProductStore } from '~/store/product';
 
+const keyword = ref('')
+const { search } = storeToRefs(useProductStore())
+
+watch(keyword, () => {
+    if (!keyword.value) {
+        search.value = keyword.value
+    }
+})
+
+const onSearch = () => {
+    search.value = keyword.value
+}
 </script>
 
 <style lang="postcss" scoped>
