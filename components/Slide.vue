@@ -17,7 +17,7 @@
       </button>
     </div>
 
-    <div class="thumbnails">
+    <div class="thumbnails" v-if="!loading">
       <img
           v-for="(image, index) in images"
           :key="index"
