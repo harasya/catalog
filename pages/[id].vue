@@ -1,7 +1,9 @@
 <template>
     <LayoutBreadcrumb class="mb-6" :breadcrumbs="breadcrumbs" />
     <div>
+        <Loading width="200" v-if="isLoading" />
         <h3>{{ product.name }}</h3>
+
         <div class="tabs">
             <div class="tab" v-for="(tab, index) in tabs" :key="index">
                 <div class="tab__title" :class="{ 'tab__title--active': selectedTab.name === tab.name }" @click="selectedTab = tab">
