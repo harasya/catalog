@@ -1,12 +1,14 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Slide :images="product.images" />
+        <Slide :images="product.images" :loading/>
         <div class="space-y-4">
             <div>
                 <div class="title">Description</div>
+                <Loading width="200" v-if="loading" />
                 <div class="description">{{ product.description }}</div>
             </div>
             <div class="flex items-center justify-between">
+                <Loading width="100" v-if="loading" />
                 <div class="price">${{ product.price }}</div>
                 <div class="text-success flex items-center gap-2">
                     <img src="~/assets/images/checked.svg" alt="Checked" />
@@ -43,6 +45,10 @@ defineProps({
     product: {
         type: Object,
         required: true,
+    },
+    loading: {
+        type: Boolean,
+        default: false,
     },
 })
 

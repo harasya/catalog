@@ -2,6 +2,12 @@
     <div class="section-filter">
         <div class="title">{{ label }}</div>
         <div class="space-y-2 mt-4">
+            <template v-if="loading">
+                <div v-for="i in 5" :key="i" class="flex items-center gap-2 justify-between w-full">
+                    <Loading width="150" />
+                    <Loading width="15" />
+                </div>
+            </template>
             <div v-for="item in items" :key="item.id" class="section-filter__list flex justify-between items-center">
                 <div>
                     {{ item.name }}
@@ -24,8 +30,11 @@ defineProps({
         type: Array as PropType<ICategory[]>,
         default: () => [],
     },
+    loading: {
+        type: Boolean,
+        default: false,
+    }
 })
-
 
 </script>
 

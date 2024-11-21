@@ -24,7 +24,6 @@ export default async function useApi<T> (
   const config    = useRuntimeConfig()
 
   const urlWithAppBase = config.public.apiBaseUrl + url
-  console.error("💢 ~ urlWithAppBase:", urlWithAppBase)
 
   return await useFetch(urlWithAppBase, {
     async onRequest () {

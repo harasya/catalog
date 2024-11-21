@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="detail-content" v-if="currentComponent">
-            <component  :is="currentComponent" :product="product" />
+            <component  :is="currentComponent" :product="product" :loading="isLoading" />
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@ import type { IBreadcrumb, IProduct } from '~/types/global';
 const route = useRoute()
 const id = route.params.id
 const product = ref<IProduct>({} as IProduct)
+const isLoading = ref(true)
 const tabs = ref([
     {
         name: 'General Info',
@@ -63,10 +64,13 @@ const breadcrumbs = computed<IBreadcrumb[]>(() => [
 ])
 
 const onLoaded = async () => {
+    isLoading.value = true
     const { data, error } = await useApi<IProduct>(`/products/${id}`)
     if (error.value) {
+        isLoading.value = false
         console.error('Failed to fetch products:', error.value);
     } else {
+        isLoading.value = false
         product.value = data.value || {} as IProduct
     }
 }

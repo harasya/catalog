@@ -3,7 +3,7 @@ import { useProductStore } from "./product"
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref<ICategory[]>([])
-  const isLoading = ref(false)
+  const isLoading = ref(true)
   const { products } = storeToRefs(useProductStore())
 
   const categoryProduct = computed(() => {

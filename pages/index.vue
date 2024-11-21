@@ -11,6 +11,16 @@
     <div class="flex gap-4">
         <SidebarFilter class="sidebar-filter hidden lg:block" />
         <div class="items grid grid-cols-2 lg:grid-cols-3 gap-8">
+            <template v-if="isLoading">
+                <div v-for="i in 6" :key="i" class="flex flex-col gap-4">
+                    <Loading width="160" height="100" responsive>
+                        <rect x="0" y="0" width="100%" height="100%" />
+                    </Loading>
+                    <Loading />
+                    <Loading width="200" />
+                    <Loading />
+                </div>
+            </template>
             <Item v-for="product in products" :key="product.id" :item="product" />
         </div>
     </div>
@@ -40,6 +50,7 @@ const onLoaded = async () => {
 
     if (error.value) {
         console.error('Failed to fetch products:', error.value);
+        isLoading.value = false
     } else {
         isLoading.value = false
         products.value = data.value || [] as IProduct[]

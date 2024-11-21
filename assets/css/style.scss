@@ -84,6 +84,9 @@ a {
     &-row {
         flex-direction: row;
     }
+    &-col {
+        flex-direction: column;
+    }
 }
 
 .grid {
